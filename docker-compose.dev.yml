@@ -1,0 +1,96 @@
+version: '3.7'
+services:
+
+  traefik:
+    networks:
+      - web-dev
+    ports:
+      # Listen on port 80, default for HTTP, necessary to redirect to HTTPS
+      - target: 80
+        published: 80
+        mode: host
+      # Listen on port 443, default for HTTPS
+      - target: 443
+        published: 443
+        mode: host
+      - target: 8080
+        published: 8080
+        mode: host
+    volumes:
+      # Add Docker as a mounted volume, so that Traefik can read the labels of other services (read-only)
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Provide a custom config for Traefik (read-only)
+      - ./_volumes/traefik/traefik.yml:/traefik.yml:ro
+      # Provide an additional configuration for local certificates
+      - ./_volumes/traefik/traefik-certs.yml:/traefik-certs.yml
+      # Mount the certificate store from our local project
+      - ./_volumes/traefik/certificates/:/certificates
+  
+  mariadb:
+    hostname: "movie-recommender_mariadb"
+    networks:
+      - web-dev
+    environment:
+        MYSQL_ROOT_PASSWORD: "rootpassword"
+        MARIADB_DATABASE: "movie-recommender"
+        MARIADB_USER: "movie-recommender-user"
+        MARIADB_PASSWORD: "movie-recommender-password"
+    volumes:
+      # Add volume for all database files
+      - ./_volumes/mysql/database_data/:/var/lib/mysql
+      # Add volume for custom configurations
+      - ./_volumes/mysql/conf.d/:/etc/mysql/conf.d
+      - ./_volumes/mysql/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d
+    ports:
+      - target: 3306
+        published: 3306
+        mode: host
+
+  php:
+    networks:
+        - web-dev
+    volumes:
+      - .:/var/www/html/:cached
+    environment:
+      AUTORUN_ENABLED: false
+      PRODUCTION: "true"
+    depends_on:
+      - "mariadb"
+      - "traefik"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.movie-recommender.rule=Host(`movie-recommender.dev.test`)"
+      - "traefik.http.routers.movie-recommender.entrypoints=websecure"
+      - "traefik.http.routers.movie-recommender.tls=true"
+      - "traefik.http.services.movie-recommender.loadbalancer.server.port=443"
+      - "traefik.http.services.movie-recommender.loadbalancer.server.scheme=https"
+
+  node:
+    networks:
+      - web-dev
+    volumes:
+      - .:/usr/src/app/:cached
+    working_dir: /usr/src/app/
+
+  redis:
+    hostname: "movie-recommender_redis"
+    networks:
+      - web-dev
+    volumes:
+     - ./_volumes/redis/data:/data:cached
+    depends_on:
+      - "mariadb"
+      - "php"
+    command: "redis-server --appendonly yes --requirepass redispassword"
+
+  mailhog:
+    ports:
+      - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+      - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+    networks:
+      - web-dev
+    depends_on:
+      - "traefik"
+
+networks:
+  web-dev:
