@@ -27,20 +27,3 @@ jobs:
           touch database/database.sqlite
       - name: Launch PHPStan inspection
         run: vendor/bin/phpstan analyze
-  pint-style:
-    name: Run style format (PHP)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
-          coverage: none
-      - name: Run composer install
-        run: composer install -n --prefer-dist
-        env:
-          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
-      - name: Run style format
-        run: ./vendor/bin/pint --test -v --ansi
