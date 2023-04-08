@@ -32,4 +32,3 @@ Route::get('/random', function () {
 Route::get('/news', function () {
     return view('news.changelog');
 });
-
