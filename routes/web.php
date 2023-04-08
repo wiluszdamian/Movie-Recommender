@@ -21,6 +21,10 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
 Route::get('/random', function () {
     return view('random.spin');
 });
@@ -28,3 +32,4 @@ Route::get('/random', function () {
 Route::get('/news', function () {
     return view('news.changelog');
 });
+

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', 'Sign In')
 
 @section('content')
  <!-- Normal Breadcrumb Begin -->
@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="normal__breadcrumb__text">
-                    <h2>Login</h2>
+                    <h2>Sign In</h2>
                     <p>Welcome to the Movie Recommender site.</p>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="col-lg-6">
                 <div class="login__register">
                     <h3>Dont’t Have An Account?</h3>
-                    <a href="#" class="primary-btn">Register Now</a>
+                    <a href="{{ url('register') }}" class="primary-btn">Register Now</a>
                 </div>
             </div>
         </div>
