@@ -25,6 +25,10 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+Route::get('/verify-email', function () {
+    return view('auth.verifyemail');
+});
+
 Route::get('/random', function () {
     return view('random.spin');
 });
