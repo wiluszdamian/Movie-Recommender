@@ -25,7 +25,7 @@ services:
       - ./_volumes/traefik/traefik-certs.yml:/traefik-certs.yml
       # Mount the certificate store from our local project
       - ./_volumes/traefik/certificates/:/certificates
-  
+
   mariadb:
     hostname: "movie-recommender_mariadb"
     networks:
@@ -66,6 +66,7 @@ services:
       - "traefik.http.services.movie-recommender.loadbalancer.server.scheme=https"
 
   node:
+    command: "yarn dev"
     networks:
       - web-dev
     volumes:

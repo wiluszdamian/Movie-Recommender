@@ -11,10 +11,11 @@ services:
 
   mariadb:
     image: mariadb:10.7
-  
+
   node:
-    image: node:lts
-  
+      image: node:lts
+      working_dir: /usr/src/app
+
   redis:
     image: redis:6
 
