@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Normal Breadcrumb Begin -->
-    <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
+    <section class="normal-breadcrumb-verify set-bg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

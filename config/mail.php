@@ -24,8 +24,8 @@ return [
     | their respective settings. Several examples have been configured for
     | you and you are free to add your own as your application requires.
     |
-    | Laravel supports a variety of mail "transport" drivers to be used while
-    | sending an e-mail. You will specify which one you are using for your
+    | Laravel supports a variety of Mail "transport" drivers to be used while
+    | sending an e-Mail. You will specify which one you are using for your
     | mailers below. You are free to add additional mailers as required.
     |
     | Supported: "smtp", "sendmail", "mailgun", "ses", "ses-v2",
@@ -117,7 +117,7 @@ return [
         'theme' => 'default',
 
         'paths' => [
-            resource_path('views/vendor/mail'),
+            resource_path('views/vendor/Mail'),
         ],
     ],
 

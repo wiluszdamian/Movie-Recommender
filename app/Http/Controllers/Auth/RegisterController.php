@@ -25,7 +25,6 @@ class RegisterController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     *
      * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
@@ -52,6 +51,6 @@ class RegisterController extends Controller
 
         toastr()->success('Done! The account has been created!');
 
-        return redirect()->back();
+        return redirect('/verify-email');
     }
 }

@@ -36,7 +36,7 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'), $remember)) {
             $request->session()->regenerate();
 
-            toastr()->success('Success!');
+            toastr()->success('Done! Welcome to the website.');
 
             return redirect('/');
         }

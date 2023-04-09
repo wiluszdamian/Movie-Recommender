@@ -47,15 +47,25 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="{{ url('') }}">Homepage</a></li>
-                            <li><a href="{{ url('') }}">Categories <span class="arrow_carrot-down"></span></a>
+                            <li><a href="{{ url('') }}">Home</a></li>
+                            <li><a href="{{ url('') }}">Movies <span class="arrow_carrot-down"></span></a>
                                 <ul class="dropdown">
-                                    <li><a href="{{ url('') }}">Categories</a></li>
-                                    <li><a href="{{ url('') }}">Anime Details</a></li>
-                                    <li><a href="{{ url('') }}">Anime Watching</a></li>
-                                    <li><a href="{{ url('') }}">Blog Details</a></li>
-                                    <li><a href="{{ url('') }}">Sign Up</a></li>
-                                    <li><a href="{{ url('') }}">Login</a></li>
+                                    <li><a href="{{ url('') }}">Actions</a></li>
+                                    <li><a href="{{ url('') }}">Adventure</a></li>
+                                    <li><a href="{{ url('') }}">Animation</a></li>
+                                    <li><a href="{{ url('') }}">Comedy</a></li>
+                                    <li><a href="{{ url('') }}">Crime</a></li>
+                                    <li><a href="{{ url('') }}">Documentary</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ url('') }}">Series <span class="arrow_carrot-down"></span></a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ url('') }}">Actions & Adventure</a></li>
+                                    <li><a href="{{ url('') }}">Animations</a></li>
+                                    <li><a href="{{ url('') }}">Comedy</a></li>
+                                    <li><a href="{{ url('') }}">Crime</a></li>
+                                    <li><a href="{{ url('') }}">Documentary</a></li>
+                                    <li><a href="{{ url('') }}">Drama</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ url('random') }}">Random</a></li>

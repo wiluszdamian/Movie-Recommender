@@ -3,7 +3,7 @@
 @section('title', 'Sign In')
 
 @section('content')
- <!-- Normal Breadcrumb Begin -->
+<!-- Normal Breadcrumb Begin -->
 <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
     <div class="container">
         <div class="row">
@@ -45,7 +45,7 @@
                         </div>
                         <button type="submit" class="site-btn">Login Now</button>
                     </form>
-                    <a href="#" class="forget_pass">Forgot Your Password?</a>
+                    <a href="{{ url('forgot-password') }}" class="forget_pass">Forgot Your Password?</a>
                 </div>
             </div>
             <div class="col-lg-6">

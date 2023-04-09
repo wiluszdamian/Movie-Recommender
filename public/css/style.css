@@ -1320,6 +1320,20 @@ ol {
     justify-content: center;
 }
 
+.normal-breadcrumb-verify {
+    height: 85vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+
 .normal__breadcrumb__text h2 {
     color: #ffffff;
     font-size: 48px;
@@ -1706,6 +1720,10 @@ ol {
     padding-left: 145px;
 }
 
+.forgot__password {
+    height: 45vh;
+}
+
 .login__form:after {
     position: absolute;
     right: -14px;
@@ -1800,6 +1818,12 @@ ol {
     font-weight: 700;
     font-family: "Oswald", sans-serif;
     margin-bottom: 30px;
+}
+
+.login__register p {
+    color: #ffffff;
+    font-weight: 200;
+    font-family: "Oswald", sans-serif;
 }
 
 .login__register .primary-btn {
