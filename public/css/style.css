@@ -165,6 +165,14 @@ ol {
     padding: 12px 30px;
 }
 
+.btn-logout {
+    border:none;
+    background:none;
+    padding:0;
+    cursor:pointer;
+    color: white;
+}
+
 /* Preloder */
 
 #preloder {

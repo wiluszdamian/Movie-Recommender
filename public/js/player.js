@@ -887,7 +887,8 @@ typeof navigator === "object" && (function (global, factory) {
         // Basic functionality vs full UI
         check: function check(type, provider, playsinline) {
             var canPlayInline = browser.isIPhone && playsinline && support.playsinline;
-            var api = support[type] || provider !== 'html5';
+            var
+                eapi = support[type] || provider !== 'html5';
             var ui = api && support.rangeInput && (type !== 'video' || !browser.isIPhone || canPlayInline);
             return {
                 api: api,

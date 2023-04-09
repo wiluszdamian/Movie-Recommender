@@ -25,17 +25,31 @@
             <div class="col-lg-6">
                 <div class="login__form">
                     <h3>Sign Up</h3>
-                    <form action="#">
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="input__item">
-                            <input type="text" placeholder="Email address">
+                            <input name="email" id="email" type="text" placeholder="Email address" class="form-control @error('email') is invalid @enderror">
                             <span><i class="fa fa-envelope"></i></span>
                         </div>
                         <div class="input__item">
-                            <input type="text" placeholder="Your Name">
+                            <input name="name" id = "name" type="text" placeholder="Your Name" class="form-control @error('name') is invalid @enderror">
                             <span><i class="fa fa-user"></i></span>
                         </div>
                         <div class="input__item">
-                            <input type="text" placeholder="Password">
+                            <input name="password" id="password" type="password" placeholder="Password" class="form-control @error('password') is invalid @enderror">
+                            <span><i class="fa fa-unlock"></i></span>
+                        </div>
+                        <div class="input__item">
+                            <input name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Password" class="form-control @error('password-confirm') is invalid @enderror">
                             <span><i class="fa fa-unlock"></i></span>
                         </div>
                         <button type="submit" class="site-btn">Register Now</button>

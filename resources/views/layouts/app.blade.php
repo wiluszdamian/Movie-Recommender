@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @livewireStyles
 </head>
 
 <body>
@@ -38,7 +39,7 @@
             <div class="col-lg-2">
                 <div class="header__logo">
                     <a href="{{ url('') }}">
-                        <img src="img/logo.png" alt="">
+                        <img src="{{ asset('img/logo.png') }}" alt="">
                     </a>
                 </div>
             </div>
@@ -66,7 +67,19 @@
             <div class="col-lg-2">
                 <div class="header__right">
                     <a href="#" class="search-switch"><span><i class="fa fa-search"></i></span></a>
-                    <a href="{{ url('login') }}"><span><i class="fa fa-user"></i></span></a>
+                    @guest
+                        <a href="{{ url('login') }}"><span><i class="fa fa-user"></i></span></a>
+                    @else
+                        <a href="{{ url('/') }}"><span><i class="fa fa-user"></i></span></a>
+                    @endguest
+                    @auth
+                        <form action="{{ route('logout') }}" method="POST" style="display:inline-block;">
+                            @csrf
+                            <button type="submit" class="btn-logout">
+                                <span><i class="fa fa-sign-out"></i></span>
+                            </button>
+                        </form>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -86,16 +99,15 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}" alt="Movie-Recommender-Logo"></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="footer__nav">
                     <ul>
-                        <li class="active"><a href="./index.html">Homepage</a></li>
-                        <li><a href="./categories.html">Categories</a></li>
-                        <li><a href="./blog.html">Our Blog</a></li>
-                        <li><a href="#">Contacts</a></li>
+                        <li><a href="{{ url('https://github.com/wiluszdamian/Movie-Recommender') }}"><i class="fa fa-github"></i> GitHub</a></li>
+                        <li><a href="{{ url('https://www.linkedin.com/in/damianwilusz/') }}"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="{{ url('https://www.wilusz.eu/') }}"><i class="fa fa-wordpress"></i> Portfolio</a></li>
                     </ul>
                 </div>
             </div>
@@ -103,7 +115,6 @@
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-
             </div>
         </div>
     </div>
@@ -130,8 +141,8 @@
 <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-
-
+<!-- Livewire -->
+@livewireScripts
 </body>
 
 </html>

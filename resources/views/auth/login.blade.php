@@ -24,13 +24,23 @@
             <div class="col-lg-6">
                 <div class="login__form">
                     <h3>Login</h3>
-                    <form action="#">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="input__item">
-                            <input type="text" placeholder="Email address">
+                            <input name="email" id="email" type="text" placeholder="Email address">
                             <span><i class="fa fa-envelope"></i></span>
                         </div>
                         <div class="input__item">
-                            <input type="text" placeholder="Password">
+                            <input name="password" id="password" type="password" placeholder="Password">
                             <span><i class="fa fa-unlock"></i></span>
                         </div>
                         <button type="submit" class="site-btn">Login Now</button>
