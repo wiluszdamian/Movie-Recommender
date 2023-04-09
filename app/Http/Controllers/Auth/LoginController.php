@@ -4,17 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Validation\ValidationException;
-use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class LoginController extends Controller
 {
     /**
      * Show the login form.
-     *
-     * @return View
      */
     public function index(): View
     {
@@ -23,9 +21,6 @@ class LoginController extends Controller
 
     /**
      * Handle an incoming registration request.
-     *
-     * @param  Request  $request
-     * @return RedirectResponse
      *
      * @throws ValidationException
      */

@@ -11,9 +11,6 @@ class LogoutController extends Controller
 {
     /**
      * Log the user out of the application.
-     *
-     * @param Request $request
-     * @return RedirectResponse
      */
     public function logout(Request $request): RedirectResponse
     {
@@ -24,6 +21,7 @@ class LogoutController extends Controller
         $request->session()->regenerateToken();
 
         toastr()->success('Done! Successfully logged out.');
+
         return redirect('/');
     }
 }

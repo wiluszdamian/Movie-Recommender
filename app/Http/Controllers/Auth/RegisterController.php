@@ -16,8 +16,6 @@ class RegisterController extends Controller
 {
     /**
      * Show the registration form.
-     *
-     * @return View
      */
     public function index(): View
     {
@@ -27,8 +25,6 @@ class RegisterController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  Request  $request
-     * @return RedirectResponse
      *
      * @throws ValidationException
      */
