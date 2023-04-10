@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +20,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
 
 Route::middleware(['guest'])->group(function () {
     // Login
@@ -41,7 +42,6 @@ Route::middleware(['guest'])->group(function () {
     // Reset password
     Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->name('password.reset');
     Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
-
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

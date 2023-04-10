@@ -113,7 +113,11 @@ ol {
 .set-bg {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    background-position: center;
+}
+
+.set-bg-trending {
+    height: 800px;
 }
 
 .spad {
@@ -1041,7 +1045,46 @@ ol {
     display: inline-block;
 }
 
+.anime__details__btn .show-btn {
+    font-size: 13px;
+    color: #ffffff;
+    background: #fd7e14;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-right: 11px;
+}
+
 .anime__details__btn .follow-btn {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e53637;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-right: 11px;
+}
+
+.anime__details__btn .imdb-btn {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e0a800;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-right: 11px;
+}
+
+.anime__details__btn .bookmark-btn {
     font-size: 13px;
     color: #ffffff;
     background: #e53637;
@@ -2292,7 +2335,22 @@ ol {
     .footer__nav ul li {
         margin-right: 10px;
     }
+    .anime__details__btn .show-btn {
+        padding: 14px 26px;
+        margin-right: 11px;
+        margin-bottom: 25px;
+    }
     .anime__details__btn .follow-btn {
+        padding: 14px 26px;
+        margin-right: 11px;
+        margin-bottom: 25px;
+    }
+    .anime__details__btn .imdb-btn {
+        padding: 14px 26px;
+        margin-right: 11px;
+        margin-bottom: 25px;
+    }
+    .anime__details__btn .bookmark-btn {
         padding: 14px 26px;
         margin-right: 11px;
         margin-bottom: 25px;
