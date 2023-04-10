@@ -22,6 +22,6 @@ class LogoutController extends Controller
 
         toastr()->success('Done! Successfully logged out.');
 
-        return redirect('/');
+        return redirect('home');
     }
 }

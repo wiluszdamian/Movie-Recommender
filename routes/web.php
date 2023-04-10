@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-// Auth
 Route::middleware(['guest'])->group(function () {
     // Login
     Route::get('/login', [LoginController::class, 'index']);
@@ -31,22 +31,24 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisterController::class, 'index']);
     Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
+    // Verification Email
+    Route::get('/email/verify/{id}/{hash}', [RegisterController::class, 'verify'])->name('verification.verify');
+
     // Forgot Password
     Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password.index');
     Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('forgot-password.send-reset-link');
 
     // Reset password
-    Route::get('/reset-password/{token}', [ChangePasswordController::class, 'index'])->name('password.reset');
-    Route::post('/reset-password', [ChangePasswordController::class, 'resetPassword'])->name('password.update');
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'index'])->name('password.reset');
+    Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
+
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 
-Route::get('/verify-email', function () {
-    return view('auth.verify-email');
-});
+Route::get('/demo', [DemoController::class, 'demo'])->name('demo');
 
 Route::get('/random', function () {
     return view('random.spin');
@@ -58,4 +60,8 @@ Route::get('/news', function () {
 
 Route::get('/movie', function () {
     return view('details.movie-detail');
+});
+
+Route::fallback(function () {
+    return redirect('/');
 });

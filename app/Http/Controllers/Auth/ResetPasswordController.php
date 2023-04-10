@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
 
-class ChangePasswordController extends Controller
+class ResetPasswordController extends Controller
 {
     /**
      * Show the form for changing the user's password.

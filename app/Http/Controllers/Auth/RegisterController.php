@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -49,8 +50,30 @@ class RegisterController extends Controller
 
         event(new Registered($user));
 
-        toastr()->success('Done! The account has been created!');
+        toastr()->success('The confirmation email was sent to your mail.');
 
-        return redirect('/verify-email');
+        return redirect()->back();
+    }
+
+    /**
+     * Handle a user verification request.
+     */
+    public function verify(Request $request): RedirectResponse
+    {
+        $user = User::find($request->route('id'));
+
+        if ($user->hasVerifiedEmail()) {
+            toastr()->error('The email has already been verified.');
+
+            return redirect('home');
+        }
+
+        if ($user->markEmailAsVerified()) {
+            event(new Verified($user));
+        }
+
+        toastr()->success('Mail verified correctly.');
+
+        return redirect('login');
     }
 }
