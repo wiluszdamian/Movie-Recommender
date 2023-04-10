@@ -64,7 +64,7 @@ class TmdbApiService
      * Retrieve media details based on type and ID.
      *
      * @param  string  $type The type of media (e.g. movie, tv, person).
-     * @param  int  $id The ID of the media.
+     * @param int $id The ID of the media.
      * @return array The array of media details.
      */
     public function getMediaDetails(string $type, int $id): array
