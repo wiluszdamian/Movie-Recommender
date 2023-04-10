@@ -45,7 +45,7 @@
                         </div>
                         <button type="submit" class="site-btn">Login Now</button>
                     </form>
-                    <a href="{{ url('forgot-password') }}" class="forget_pass">Forgot Your Password?</a>
+                    <a href="{{ route('forgot-password.index') }}" class="forget_pass">Forgot Your Password?</a>
                 </div>
             </div>
             <div class="col-lg-6">

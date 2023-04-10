@@ -54,7 +54,7 @@
                         </div>
                         <button type="submit" class="site-btn">Register Now</button>
                     </form>
-                    <h5>Already have an account? <a href="#">Log In!</a></h5>
+                    <h5>Already have an account? <a href="{{ url('/login') }}">Log In!</a></h5>
                 </div>
             </div>
             <div class="col-lg-6">

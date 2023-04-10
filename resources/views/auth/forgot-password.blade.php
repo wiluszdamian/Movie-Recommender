@@ -24,7 +24,7 @@
             <div class="col-lg-6">
                 <div class="login__form forgot__password">
                     <h3>Remind the password</h3>
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('forgot-password.send-reset-link') }}">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">

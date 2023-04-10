@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -16,30 +17,27 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 // Auth
 Route::middleware(['guest'])->group(function () {
+    // Login
     Route::get('/login', [LoginController::class, 'index']);
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 
+    // Register
     Route::get('/register', [RegisterController::class, 'index']);
     Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
-    Route::get('/forgot-password', function () {
-        return view('auth.forgot-password');
-    })->name('password.request');
+    // Forgot Password
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password.index');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('forgot-password.send-reset-link');
 
-    Route::post('/forgot-password', [ForgotPasswordController::class, '__invoke'])->name('password.email');
-
-    Route::get('/reset-password/{token}', function ($token) {
-        return view('auth.reset-password', ['token' => $token]);
-    })->name('password.reset');
-
-    Route::post('/reset-password', [ForgotPasswordController::class, '__invoke'])->name('password.update');
+    // Reset password
+    Route::get('/reset-password/{token}', [ChangePasswordController::class, 'index'])->name('password.reset');
+    Route::post('/reset-password', [ChangePasswordController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::middleware(['auth'])->group(function () {
