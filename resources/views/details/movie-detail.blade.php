@@ -113,109 +113,29 @@
                             <h4>Cast</h4>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="col-lg-11 col-md-11 col-sm-10">
                         <div class="btn__all">
                             <a href="#" class="primary-btn">View All <span><i class="fa fa-angle-right"></i></span></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Shouwa Genroku Rakugo Shinjuu</a></h5>
-                            </div>
+                    @foreach ($cast as $result)
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ asset('https://image.tmdb.org/t/p/original/'.$result['profile_path']) }}">
+                                        <div class="ep">{{ $result['character'] }}</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{ $result['known_for_department'] }}</li>
+                                        </ul>
+                                            <h5><a href="#"><b>{{ $result['name'] }}</b> ({{ $result['character'] }})</a></h5>
+                                    </div>
+                                </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Fate/stay night Movie: Heaven's Feel - II. Lost</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Kizumonogatari II: Nekketsu-hen</a></h5>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -234,102 +154,24 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Shouwa Genroku Rakugo Shinjuu</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
+                    @foreach ($similar as $result)
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="{{ asset('https://image.tmdb.org/t/p/original/'.$result['backdrop_path']) }}">
+                                    <div class="ep"><i class="fa fa-star"></i> {{ $result['vote_average'] }}</div>
+                                    <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                    <div class="view"><i class="fa fa-eye"></i> {{ $result['vote_count'] }}</div>
+                                </div>
+                                <div class="product__item__text">
+                                    <ul>
+                                        <li>Movie</li>
+                                        <li></li>
+                                    </ul>
+                                    <h5><a href="{{ url('movie', ['id' => $result['id']]) }}">{{ $result['title'] }} ({{ date('Y', strtotime($result['release_date'])) }})</a></h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Fate/stay night Movie: Heaven's Feel - II. Lost</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ asset('img/example.jpg') }}">
-                                <div class="ep">18 / 18</div>
-                                <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                            </div>
-                            <div class="product__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Kizumonogatari II: Nekketsu-hen</a></h5>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

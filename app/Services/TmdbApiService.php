@@ -125,16 +125,25 @@ class TmdbApiService
     }
 
     /**
-     * Retrieve popular actors.
+     * Retrieve cast actors for films and series.
      *
-     * @return array The array of popular actors.
+     * @return Collection The array of popular actors.
      */
-    public function getActors(): array
+    public function getActors(string $type, string $id): Collection
     {
-        $url = "$this->baseUri/person/popular?api_key=$this->apiKey";
+        $url = "$this->baseUri/$type/$id/credits?api_key=$this->apiKey";
 
         $response = Http::get($url);
 
-        return $response->json()['results'];
+        return collect($response->json()['cast']);
+    }
+
+    public function getSimilar(string $type, string $id): Collection
+    {
+        $url = "$this->baseUri/$type/$id/similar?api_key=$this->apiKey";
+
+        $response = Http::get($url);
+
+        return collect($response->json()['results']);
     }
 }

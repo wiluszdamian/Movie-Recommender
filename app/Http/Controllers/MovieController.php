@@ -17,7 +17,13 @@ class MovieController extends Controller
     public function show(TmdbApiService $tmdbApiService, string $id)
     {
         $details = $tmdbApiService->getMediaDetails('movie', (int) $id);
+        $cast = $tmdbApiService->getActors('movie', $id)->take(6);
+        $similar = $tmdbApiService->getSimilar('movie', $id)->take(6);
 
-        return view('details.movie-detail', compact('details'));
+        return view('details.movie-detail', compact(
+            'details',
+            'cast',
+            'similar'
+        ));
     }
 }
