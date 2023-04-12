@@ -4,8 +4,6 @@ namespace App\Services;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 class TmdbApiService
 {
@@ -25,21 +23,14 @@ class TmdbApiService
      * @param  string  $type The type of media (e.g. movie, tv, person).
      * @param  string  $validTime The valid time for the trending media (e.g. day, week).
      * @return Collection The collection of trending media.
-     *
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
     public function getTrending(string $type, string $validTime): Collection
     {
-        if (session()->has("$type$validTime")) {
-            return session()->get("$type$validTime");
-        }
-
         $url = "$this->baseUri/trending/$type/$validTime?api_key=$this->apiKey";
 
         $response = Http::get($url);
 
-        $results = collect($response->json()['results'])->map(function ($result) {
+        return collect($response->json()['results'])->map(function ($result) {
             $type = $result['media_type'];
             $id = $result['id'];
             $details = $this->getMediaDetails($type, $id);
@@ -48,6 +39,7 @@ class TmdbApiService
             return [
                 'id' => $details['id'],
                 'title' => $details['title'] ?? $details['name'],
+                'release_date' => $details['release_date'] ?? $details['first_air_date'],
                 'description' => $details['overview'],
                 'vote_average' => $details['vote_average'],
                 'vote_count' => $details['vote_count'],
@@ -55,9 +47,6 @@ class TmdbApiService
                 'poster' => $result['poster_path'],
             ];
         });
-        session(['$type$validTime' => $results]);
-
-        return $results;
     }
 
     /**
@@ -89,6 +78,35 @@ class TmdbApiService
         $response = Http::get($url);
 
         return collect($response->json()['results']);
+    }
+
+    /**
+     * Get top-rated movies or TV shows based on the given type.
+     *
+     * @param  string  $type The type of media (either 'movie' or 'tv') for which to get top-rated results.
+     * @return Collection A collection of top-rated movies or TV shows with relevant details.
+     */
+    public function getTopRated(string $type): Collection
+    {
+        $url = "$this->baseUri/$type/top_rated?api_key=$this->apiKey";
+
+        $response = Http::get($url);
+
+        return collect($response->json()['results'])->map(function ($result) use ($type) {
+            $id = $result['id'];
+            $details = $this->getMediaDetails($type, $id);
+            $genres = $this->getGenres($type);
+
+            return [
+                'id' => $details['id'],
+                'title' => $details['title'] ?? $details['name'],
+                'vote_average' => $details['vote_average'],
+                'release_date' => $details['release_date'] ?? $details['first_air_date'],
+                'vote_count' => $details['vote_count'],
+                'genre' => $genres->firstWhere('id', $result['genre_ids'][0])['name'],
+                'poster_path' => $result['poster_path'],
+            ];
+        });
     }
 
     /**
