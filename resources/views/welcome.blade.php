@@ -92,7 +92,7 @@
                                             <li>TV</li>
                                             <li>{{ $result['genre'] }}</li>
                                         </ul>
-                                        <h5><a href="#">{{ $result['title'] ?? $result['name'] }}</a></h5>
+                                        <h5><a href="{{ url('tv', ['id' => $result['id']]) }}">{{ $result['title'] ?? $result['name'] }}</a></h5>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                         <li>TV</li>
                                         <li>{{ $result['genre'] }}</li>
                                     </ul>
-                                    <h5><a href="{{ $result['id'] }}">{{ $result['title'] }}</a></h5>
+                                    <h5><a href="{{ url('tv', ['id' => $result['id']]) }}">{{ $result['title'] }}</a></h5>
                                 </div>
                             </div>
                         </div>

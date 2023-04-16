@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Details')
+@section('title', 'Movie Details')
 
 @section('content')
 <!-- Breadcrumb Begin -->
@@ -31,7 +31,6 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="anime__details__pic set-bg set-bg-trending" data-setbg="{{ asset('https://image.tmdb.org/t/p/original/'.$details['poster_path']) }}">
-                        <div class="comment"><i class="fa fa-imdb"></i></div>
                         <div class="view"><i class="fa fa-eye"></i> 9141</div>
                     </div>
                 </div>
@@ -165,7 +164,7 @@
                                 <div class="product__item__text">
                                     <ul>
                                         <li>Movie</li>
-                                        <li></li>
+                                        <li>{{ $result['genre'] }}</li>
                                     </ul>
                                     <h5><a href="{{ url('movie', ['id' => $result['id']]) }}">{{ $result['title'] }} ({{ date('Y', strtotime($result['release_date'])) }})</a></h5>
                                 </div>

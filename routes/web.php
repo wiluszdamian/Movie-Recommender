@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TvController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/movie/{id}', [MovieController::class, 'show'])->name('movie');
+Route::get('/tv/{id}', [TvController::class, 'show'])->name('tv');
 
 Route::middleware(['guest'])->group(function () {
     // Login

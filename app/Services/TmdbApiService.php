@@ -144,6 +144,21 @@ class TmdbApiService
 
         $response = Http::get($url);
 
-        return collect($response->json()['results']);
+        return collect($response->json()['results'])->map(function ($result) use ($type) {
+            $id = $result['id'];
+            $details = $this->getMediaDetails($type, $id);
+            $genres = $this->getGenres($type);
+
+            return [
+                'id' => $details['id'],
+                'title' => $details['title'] ?? $details['name'],
+                'vote_average' => $details['vote_average'],
+                'backdrop_path' => $details['backdrop_path'],
+                'release_date' => $details['release_date'] ?? $details['first_air_date'],
+                'vote_count' => $details['vote_count'],
+                'genre' => $genres->firstWhere('id', $result['genre_ids'][0])['name'],
+                'poster_path' => $result['poster_path'],
+            ];
+        });
     }
 }
