@@ -113,7 +113,11 @@ ol {
 .set-bg {
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    background-position: center;
+}
+
+.set-bg-trending {
+    height: 800px;
 }
 
 .spad {
@@ -163,6 +167,14 @@ ol {
     text-transform: uppercase;
     display: inline-block;
     padding: 12px 30px;
+}
+
+.btn-logout {
+    border:none;
+    background:none;
+    padding:0;
+    cursor:pointer;
+    color: white;
 }
 
 /* Preloder */
@@ -1033,7 +1045,46 @@ ol {
     display: inline-block;
 }
 
+.anime__details__btn .show-btn {
+    font-size: 13px;
+    color: #ffffff;
+    background: #fd7e14;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-right: 11px;
+}
+
 .anime__details__btn .follow-btn {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e53637;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-right: 11px;
+}
+
+.anime__details__btn .imdb-btn {
+    font-size: 13px;
+    color: #ffffff;
+    background: #e0a800;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    border-radius: 4px;
+    margin-right: 11px;
+}
+
+.anime__details__btn .bookmark-btn {
     font-size: 13px;
     color: #ffffff;
     background: #e53637;
@@ -1311,6 +1362,20 @@ ol {
     -ms-flex-pack: center;
     justify-content: center;
 }
+
+.normal-breadcrumb-verify {
+    height: 85vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
 
 .normal__breadcrumb__text h2 {
     color: #ffffff;
@@ -1698,6 +1763,10 @@ ol {
     padding-left: 145px;
 }
 
+.forgot__password {
+    height: 45vh;
+}
+
 .login__form:after {
     position: absolute;
     right: -14px;
@@ -1792,6 +1861,12 @@ ol {
     font-weight: 700;
     font-family: "Oswald", sans-serif;
     margin-bottom: 30px;
+}
+
+.login__register p {
+    color: #ffffff;
+    font-weight: 200;
+    font-family: "Oswald", sans-serif;
 }
 
 .login__register .primary-btn {
@@ -2260,7 +2335,22 @@ ol {
     .footer__nav ul li {
         margin-right: 10px;
     }
+    .anime__details__btn .show-btn {
+        padding: 14px 26px;
+        margin-right: 11px;
+        margin-bottom: 25px;
+    }
     .anime__details__btn .follow-btn {
+        padding: 14px 26px;
+        margin-right: 11px;
+        margin-bottom: 25px;
+    }
+    .anime__details__btn .imdb-btn {
+        padding: 14px 26px;
+        margin-right: 11px;
+        margin-bottom: 25px;
+    }
+    .anime__details__btn .bookmark-btn {
         padding: 14px 26px;
         margin-right: 11px;
         margin-bottom: 25px;
